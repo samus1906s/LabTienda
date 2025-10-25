@@ -35,13 +35,15 @@ public class ServicioNotificaciones implements Observador {
      * @return 
      */
     public Notificacion enviar(Factura factura, CanalNotificacion canal){
-        Notificacion n = new Notificacion(seq++, factura, canal);
+        Notificacion n = null;
+        
+        NotificacionCreador crear;
         try {
             switch (canal){
-                case EMAIL -> System.out.println("[EMAIL] Enviando a " + factura.getCliente().getEmail());
-                case SMS -> System.out.println("[SMS] Enviando a " + factura.getCliente().getTelefono());
-                case WHATSAPP -> System.out.println("[WA] Enviando a " + factura.getCliente().getTelefono());
-                case PANTALLA -> System.out.println("[POPUP] Factura #" + factura.getNumero());
+                case EMAIL -> crear = new EmailFactory();
+                case SMS -> crear = new SMSFactory();
+                case WHATSAPP -> crear = new WhatsAppFactory();
+                case PANTALLA -> crear = new PantallaFactory();
             }
             n.setEstado(EstadoNotificacion.ENVIADA);
         } catch (Exception e){
@@ -50,6 +52,12 @@ public class ServicioNotificaciones implements Observador {
         historial.add(n);
         return n;
     }
+    
+        
+      public List<Notificacion> historial(){
+        return historial;
+    }
+   
 
     @Override
     public void actualizar() {
