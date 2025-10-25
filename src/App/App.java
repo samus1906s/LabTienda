@@ -41,6 +41,12 @@ public class App {
         ServicioClientes servClie = new ServicioClientes(repoClie);
         ServicioNotificaciones servNoti = new ServicioNotificaciones();
         ServicioFacturacion servFact = new ServicioFacturacion(repoFact, servNoti);
+        
+        ServicioCatalogo catalogo = new ServicioCatalogo(repoCate, repoProd);
+        ServicioNotificaciones servicioNotificaciones = new ServicioNotificaciones();
+
+        catalogo.agregarObservador(servicioNotificaciones);
+
 
         seedDatos(servCata, servClie);
 

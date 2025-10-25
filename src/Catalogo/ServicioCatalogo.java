@@ -6,14 +6,19 @@ package Catalogo;
 
 import java.util.List;
 import java.util.Optional;
+import Observer.Observador;
+import Observer.Sujeto;
+import java.util.ArrayList;
 
 /**
  *
  * @author jprod
  */
-public class ServicioCatalogo {
+public class ServicioCatalogo implements Sujeto {
     private final RepositorioCategorias categoriaRepo;
     private final RepositorioProductos productoRepo;
+    
+    private final List<Observador> observadores = new ArrayList<>();
 
     public ServicioCatalogo(RepositorioCategorias cr, RepositorioProductos pr){
         this.categoriaRepo = cr; this.productoRepo = pr;
@@ -74,6 +79,23 @@ public class ServicioCatalogo {
     
     public List<Producto> filtrarPorCategoria(Categoria c){ 
         return productoRepo.filtrarPorCategoria(c);
+    }
+
+    @Override
+    public void agregarObservador(Observador o) {
+        observadores.add(o);
+    }
+
+    @Override
+    public void eliminarObservador(Observador o) {
+        observadores.remove(o);
+    }
+
+    @Override
+    public void notificarObservadores() {
+        for(Observador o : observadores) {
+            o.actualizar();
+        }
     }
     
 }

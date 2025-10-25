@@ -8,12 +8,13 @@ import Facturacion.Factura;
 import Notificaciones.Notificacion;
 import java.util.ArrayList;
 import java.util.List;
+import Observer.Observador;
 
 /**
  *
  * @author jprod
  */
-public class ServicioNotificaciones {
+public class ServicioNotificaciones implements Observador {
     private int seq = 1;
     private final List<Notificacion> historial;
 
@@ -48,6 +49,11 @@ public class ServicioNotificaciones {
         }
         historial.add(n);
         return n;
+    }
+
+    @Override
+    public void actualizar() {
+        System.out.println("Notificación: Se ha actualizado el catálogo de productos o categorías.");
     }
 
 }

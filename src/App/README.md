@@ -58,3 +58,9 @@ El diseño sigue principios de **buenas prácticas**, **encapsulamiento**, **sep
 └── README.md
 
 ## 🧩 Patrones de diseño aplicados
+
+Patrón Observer:
+
+- Se implemento el patrón observer para notificar los cambios que se hacen en el catálogo.
+- El sujeto en este caso es serviciocatálogo porque mantiene una lista de observadores y los notifica de algún cambio en productos o categorias.
+- El observador es servicio servicionotificaciones y en su interfaz tiene un método actualizar que ejecuta el cambio o la notificación.
