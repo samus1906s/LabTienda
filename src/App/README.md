@@ -64,3 +64,9 @@ Patrón Observer:
 - Se implemento el patrón observer para notificar los cambios que se hacen en el catálogo.
 - El sujeto en este caso es serviciocatálogo porque mantiene una lista de observadores y los notifica de algún cambio en productos o categorias.
 - El observador es servicio servicionotificaciones y en su interfaz tiene un método actualizar que ejecuta el cambio o la notificación.
+
+Patrón Iterator:
+
+- Se implementó el patrón Iterator para recorrer los ítems de una factura sin exponer directamente la lista interna.
+- La clase Factura actúa como contenedor y define su propio iterador interno que permite recorrer los objetos ItemFactura.
+- Este patrón facilita el uso de bucles for-each, mejora la encapsulación y permite modificar la forma de recorrer los ítems sin afectar el resto del sistema.
