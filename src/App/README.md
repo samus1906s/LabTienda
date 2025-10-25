@@ -70,3 +70,8 @@ Patrón Iterator:
 - Se implementó el patrón Iterator para recorrer los ítems de una factura sin exponer directamente la lista interna.
 - La clase Factura actúa como contenedor y define su propio iterador interno que permite recorrer los objetos ItemFactura.
 - Este patrón facilita el uso de bucles for-each, mejora la encapsulación y permite modificar la forma de recorrer los ítems sin afectar el resto del sistema.
+
+Patrón Prototype
+
+- Se implemento la interfaz prototype para permitir clonar objetos.
+- En productos y categorias se crearon copias seguras y convenientes.
