@@ -8,7 +8,7 @@ package Catalogo;
  *
  * @author jprod
  */
-public class Producto {
+public class Producto implements Prototype <Producto>{
     private String codigo; // único visible al usuario
     private String nombre;
     private double precio;
@@ -37,6 +37,13 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + ", categoria=" + categoria + '}';
+    }
+
+    @Override
+    public Producto clone() {
+        Categoria catClone = (this.categoria != null) ? this.categoria.clone() : null;
+        return new Producto(this.codigo, this.nombre, this.precio, this.stock, catClone);
+
     }
 
 }

@@ -8,7 +8,7 @@ package Catalogo;
  *
  * @author jprod
  */
-public class Categoria {
+public class Categoria implements Prototype <Categoria>{
     private int id;
     private String nombre;
     private String descripcion;
@@ -30,6 +30,11 @@ public class Categoria {
     @Override
     public String toString() {
         return "Categoria{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", activa=" + activa + '}';
+    }
+
+    @Override
+    public Categoria clone() {
+        return new Categoria(this.id, this.nombre, this.descripcion, this.activa);
     }
 
 }
